@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>相框</title>
+    <link rel="stylesheet" href="style/photo-album-index.css">
+
+</head>
+<!--onselectstart = "return false" 设置文字不能被鼠标选中，即不能复制-->
+<body onselectstart = "return false">
+   <!-- 2.将视图改为模板字符串 -->
+    <div class="wrap" id="wrap">
+        <!-- 所有照片 photo负责平移与旋转-->
+        <div class="photo photo-front" id="photo_{{index}}" onclick="turn(this)">
+            <!-- 负责翻转 -->
+           <div class="photo-wrap">
+               <!-- 照片正面 -->
+               <div class="side side-front">
+                   <!--照片-->
+                   <p class="image">
+                       <img src="resource/img/{{img}}" alt="">
+                   </p>
+                   <!--照片标题-->
+                   <p class="caption">{{caption1}}</p>
+               </div>
+               <!-- 照片反面 -->
+               <div class="side side-back" >
+                   <p class="desc">{{desc1}}</p>
+               </div>
+           </div>
+        </div>
+    </div>
+</body>
+<script src="common/javascript/jquery.js"></script>
+<script src="common/javascript/angular.js"></script>
+<script src="javascript/photo-album-controller.js"></script>
+</html>

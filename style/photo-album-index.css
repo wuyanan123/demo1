@@ -1,0 +1,148 @@
+*{padding:0;margin:0}
+body{
+    background-color: #fff;
+    color:#555;
+    font-family:'Avenir Next','lantinghei SC';
+    font-size:14px;
+    /* 实现字体平滑 */
+    -webkit-font-smoothing:antialiased;
+}
+.wrap{
+    width:100%;
+    height:600px;
+    position:absolute;
+    top:50%;
+    margin-top:-300px;
+    background-color: #333;
+    overflow:hidden;
+    /* 设置这个在设置3D翻转时 才有作用 */
+    -webkit-perspective:800px;
+}
+.photo{
+    width:320px;
+    height:260px;
+    position:absolute;
+    z-index:1;
+    box-shadow:0 0 1px rgba(0,0,0,.01);
+    -webkit-transition:all 1s;
+}
+.photo .side{
+    width:100%;
+    height:100%;
+    background-color: #eee;
+    position:absolute;
+    top:0;
+    right:0;
+    padding:20px;
+    /*该元素的宽度和高度都会在该元素的边框之内*/
+    box-sizing:border-box;
+}
+.photo .side-front{
+
+}
+.photo .side-front .image{
+    whith:100%;
+    height:188px;
+    line-height: 188px;
+    overflow:hidden;
+}
+.photo .side-front .image img{
+    width:100%;
+}
+.photo .side-front .caption{
+    text-align:center;
+    font-size:16px;
+    line-height:50px;
+}
+.photo .side-back{
+
+}
+.photo .side-back .desc{
+    color:#666;
+    font-size: 14px;
+    line-height: 1.5em;
+}
+
+/*当前选中照片的样式*/
+.photo_center{
+    left: 50%;
+    top:50%;
+    margin: -160px 0 0 -130px;
+    z-index:999;
+}
+
+/*负责翻转*/
+.photo-wrap{
+    position:absolute;
+    width:100%;
+    height:100%;
+
+    /*设置子元素实现3D支持*/
+    -webkit-transform-style: preserve-3d;
+    -webkit-transition:all .6s;
+}
+.photo-wrap .side-front{
+    -webkit-transform:rotateY(0deg);
+}
+.photo-wrap .side-back{
+     -webkit-transform:rotateY(180deg);
+ }
+.photo-wrap .side{
+    -webkit-backface-visibility:hidden;
+}
+.photo-front .photo-wrap{
+    -webkit-transform:rotateY(0deg);
+}
+.photo-back .photo-wrap{
+    -webkit-transform:rotateY(180deg);
+}
+
+/*控制条样式*/
+.nav{
+    width:80%;
+    height:30px;
+    line-height:30px;
+    position:absolute;
+    left:10%;
+    bottom:20px;
+    z-index:999;
+    background-color: #fff;
+    text-align:center;
+}
+/*普通样式*/
+.nav .i{
+    width:30px;
+    height:30px;
+    display:inline-block;
+    cursor:pointer;
+    background-color: #aaa;
+    text-align: center;
+    border-radius:50%;
+    -webkit-transform:scale(.48);
+    -webkit-transition:all .5s;
+}
+/*选中样式*/
+.nav .i_current{
+    background-color: green;
+    -webkit-transform:scale(1);
+}
+/*选中后点击时的背面样式*/
+.nav .i_back{
+    background-color: red;
+    -webkit-transform:scale(1);
+}
+/*优化样式*/
+.photo{
+    left: 50%;
+    top:50%;
+    margin: -160px 0 0 -130px;
+}
+.photo-wrap{
+    -webkit-transform-origin:0% 50%;
+}
+.photo-front .photo-wrap{
+    -webkit-transform:translate(0px, 0px) rotateY(0deg);
+}
+.photo-back .photo-wrap{
+    -webkit-transform:translate(260px, 0px) rotateY(180deg);
+}
